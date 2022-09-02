@@ -113,9 +113,9 @@ const sumReducer = (accumulator, currentValue) => accumulator + currentValue;
 const sum = arr.reduce(sumReducer);
 console.log(sum);
 // prints 10
-// 5 + 1 + 2 + 3 + 4
 
-const sum2 = arr.reduce(sumReducer);
+// 5 + 1 + 2 + 3 + 4
+const sum2 = arr.reduce(sumReducer, 5);
 console.log(sum2);
 // prints 15
 
