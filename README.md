@@ -108,20 +108,15 @@ Let’s see an example:
 let arr = [1, 2, 3, 4];
 
 const sumReducer = (accumulator, currentValue) => accumulator + currentValue;
-
 // 1 + 2 + 3 + 4
 
-const sum = arr.reduce(sumReducer);console.log(sum);
-
+const sum = arr.reduce(sumReducer);
+console.log(sum);
 // prints 10
-
-
 // 5 + 1 + 2 + 3 + 4
 
 const sum2 = arr.reduce(sumReducer);
-
 console.log(sum2);
-
 // prints 15
 
 ```
@@ -151,11 +146,9 @@ function customReduce(arr, reducer, initialValue) {
 }
 
 const sum = customReduce(arr, sumReducer);
-
 console.log(sum); // prints 10
 
 const sum2 = reduce(arr, sumReducer, 5);
-
 console.log(sum2);// prints 15
 
 ```
