@@ -92,3 +92,70 @@ const evenNumbers2 = customFilter(arr, num => num % 2 === 0);
 console.log(evenNumbers2); 
 // prints [2, 4]
 ```
+
+Neat! The greatest and most difficult one is last. `reduce()` will be our next stop.
+
+
+## Array.prototype.reduce()
+
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+
+> The `reduce()` method executes a reducer function (that you provide) on each member of the array resulting in a single output value.
+
+Let’s see an example:
+
+```javascript
+let arr = [1, 2, 3, 4];
+
+const sumReducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+
+const sum = arr.reduce(sumReducer);console.log(sum);
+
+// prints 10
+
+
+// 5 + 1 + 2 + 3 + 4
+
+const sum2 = arr.reduce(sumReducer);
+
+console.log(sum2);
+
+// prints 15
+
+```
+Output the value of the accumulator in each step for the above example.
+
+- Before the start of the iteration, accumulator = 0
+- 1st iteration, accumulator += 1; // accumulator = 1
+- 2nd iteration, accumulator += 2; // accumulator = 3
+- 3rd iteration, accumulator += 3; // accumulator = 6
+- 4th iteration, accumulator += 4; // accumulator = 10
+
+Whenever you feel you are ready, go through the next steps on how to implement your custom `reduce()`:
+- Initialize accumulator variable with 0 or initalValue argument from the reduce().
+- Loop through the array elements.
+- Call the reducer function with the accumulator and current element as the arguments.
+- Return accumulator after going through all the elements.
+
+```javascript
+// reducer takes an array, reducer() and initialValue as argument
+
+function customReduce(arr, reducer, initialValue) {    
+  let accumulator = initialValue === undefined ? 0 : initialValue        
+  // loop though array    
+  for(let i=0; i < arr.length; i++)        
+    accumulator = customReduce(accumulator, arr[i], i, arr);    
+  return accumulator;
+}
+
+const sum = customReduce(arr, sumReducer);
+
+console.log(sum); // prints 10
+
+const sum2 = reduce(arr, sumReducer, 5);
+
+console.log(sum2);// prints 15
+
+```
