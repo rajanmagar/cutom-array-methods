@@ -44,3 +44,51 @@ const squareArr2 = customMap(arr, num => num ** 2);
 
 console.log(squareArr2); // prints [1, 4, 9, 16, 25]
 ```
+
+Isn't it cool? Now let's look at filter().
+
+## Array.prototype.filter()
+
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+> The `filter()` method creates a shallow copy of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.
+
+Let’s see an example:
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+
+// pass a function to map
+const evenNumbers = arr.filter(num => num % 2 === 0);
+
+console.log(evenNumbers); 
+// prints [2, 4]
+
+```
+
+Let’s go through step by step on how the filter() works.
+- Make an empty array called filterArr.
+- Continually iterate over the array's components.
+- called the filterFunc function with the current element as the parameter.
+- Push the element to the filterArr array if the result is true.
+- After passing over every element, return the filterArr array.
+
+```javascript
+// filter takes an array and function as argument
+function customFilter(arr, filterFunc) {    
+  const filterArr = []; // empty array        
+  // loop though array    
+  for(let i=0;i<arr.length;i++) {        
+    const result = filterFunc(arr[i], i, arr);        
+    // push the current element if result is true        
+    if(result)             
+      filterArr.push(arr[i]);     
+  }    
+  return filterArr;
+}
+
+const evenNumbers2 = customFilter(arr, num => num % 2 === 0);
+
+console.log(evenNumbers2); 
+// prints [2, 4]
+```
